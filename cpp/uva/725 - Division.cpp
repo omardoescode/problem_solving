@@ -10,7 +10,7 @@ int main() {
             fflush(stdout);
         }
         bool solutions = false;
-        for (int fghij = 01234; fghij < 98765 / n; fghij++) {
+        for (int fghij = 01234; fghij <= 98765 / n; fghij++) {
             int abcde = fghij * n;
             int used = fghij < 10000;
             tmp = abcde;
