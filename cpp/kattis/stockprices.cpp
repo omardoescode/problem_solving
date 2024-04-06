@@ -52,6 +52,7 @@ int main() {
                 buys.push({x, y});
             }
 
+            // while because we want all possible deals to be created
             while (!(buys.empty() || sells.empty())) {
                 auto buy_top = buys.top();
                 auto sell_top = sells.top();
