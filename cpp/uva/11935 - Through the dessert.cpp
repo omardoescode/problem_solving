@@ -68,10 +68,11 @@ int main() {
         }
 
         double lo = 0, hi = 10000.0;
-        while (fabs(hi - lo) > EPS) {
+	// log2(10000/EPS) = 43 -- 50 is enough
+	for (int i = 0; i < 50; i++) {
             double mid = (hi + lo) / 2.0;
             // if the mid value can work as an initial capacity, we will try some lower value
-            works(mid, events) ? hi = mid : lo = mid;
+            works(mid) ? hi = mid : lo = mid;
         }
 
         printf("%.3lf\n", hi); // A double to three precision points
