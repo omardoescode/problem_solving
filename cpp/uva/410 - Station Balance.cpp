@@ -1,3 +1,7 @@
+/*
+ * My first greedy algorithm
+ * A lot of formatting for the output to be in order of the input
+ */
 #include <bits/stdc++.h>
 using namespace std;
 
