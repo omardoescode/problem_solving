@@ -12,7 +12,8 @@ typedef vector<int> vi;
 #define REP(i, a, b) for (int i = (a), _end = (b); i < _end; i++)
 #define SQ(a) ((a) * (a))
 #define DEBUG(output) cout << output << endl
-int findMinimum(vector<int> &nums, int target) {
+
+int find(vector<int> &nums, int target, bool firstOcc) {
   int lo = 0, hi = nums.size() - 1;
   int result = -1;
 
@@ -21,26 +22,7 @@ int findMinimum(vector<int> &nums, int target) {
 
     if (target == nums[mid]) {
       result = mid;
-      hi = mid - 1;
-    } else if (target > nums[mid]) {
-      lo = mid + 1;
-    } else {
-      hi = mid - 1;
-    }
-  }
-
-  return result;
-}
-int findMaximum(vector<int> &nums, int target) {
-  int lo = 0, hi = nums.size() - 1;
-  int result = -1;
-
-  while (lo <= hi) {
-    int mid = (lo + hi) / 2;
-
-    if (target == nums[mid]) {
-      result = mid;
-      lo = mid + 1;
+      firstOcc ? hi = mid - 1 : lo = mid + 1;
     } else if (target > nums[mid]) {
       lo = mid + 1;
     } else {
@@ -51,8 +33,8 @@ int findMaximum(vector<int> &nums, int target) {
   return result;
 }
 vector<int> searchRange(vector<int> &nums, int target) {
-  int first = findMinimum(nums, target);
-  int last = findMaximum(nums, target);
+  int first = find(nums, target, 1);
+  int last = find(nums, target, 0);
   return {first, last};
 }
 int main() {
@@ -62,4 +44,5 @@ int main() {
 
   printf("The first index is %d and the last index is %d\n", result[0],
          result[1]);
+  printf("The number of occurrences is %d\n", result[1] - result[0] + 1);
 }
