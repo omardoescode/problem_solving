@@ -45,6 +45,7 @@ int searchCircularArray(int nums[], int target, int n) {
 
   return -1; // Invalid Input or target not found
 }
+
 int main() {
   int nums[] = {9, 10, 2, 5, 6, 8};
   int target = 5;
